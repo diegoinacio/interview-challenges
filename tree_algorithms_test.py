@@ -27,7 +27,7 @@ BT.root.left.left.right = 7
 BT.root.right.right.left = 10
 
 
-class Test_BalancedBrackets(unittest.TestCase):
+class Test_TreeAlgorithms(unittest.TestCase):
     def test_get_preOrder(self):
         self.assertEqual(
             get_preOrder(BT.root),
