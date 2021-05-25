@@ -18,11 +18,9 @@ def isBalanced(input_string: str) -> bool:
     # Define valid bracket pairs
     brackets = [r'()', r'[]', r'{}']
     # Remove extra information from input string
-    input_string = ''.join(
-        filter(lambda x: x in ''.join(brackets), input_string)
-    )
+    input_string = ''.join(e for e in input_string if e in ''.join(brackets))
     # Loop while exist any pair in the input string
-    while any(x in input_string for x in brackets):
+    while any(b in input_string for b in brackets):
         for bracket in brackets:
             input_string = input_string.replace(bracket, '')
     return 'YES' if not input_string else 'NO'
