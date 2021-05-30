@@ -1,0 +1,24 @@
+{
+  "name": "interview-challenges",
+  "version": "1.0.0",
+  "description": "My personal *Python* entries for interview questions and challenges.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "python": "echo python",
+    "test": "mocha || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegoinacio/interview-challenges.git"
+  },
+  "author": "Diego Inácio",
+  "license": "MIT",
+  "homepage": "https://github.com/diegoinacio/interview-challenges#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0"
+  }
+}
