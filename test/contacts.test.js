@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const contacts = require("../contacts");
+const contacts = require("../src/contacts");
 
 describe("Sample Tests", function () {
   describe("Case 0", function () {

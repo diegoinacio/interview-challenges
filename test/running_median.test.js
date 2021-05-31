@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const runningMedian = require("../running_median");
+const runningMedian = require("../src/running_median");
 
 describe("Sample Tests", function () {
   describe("Case 0", function () {

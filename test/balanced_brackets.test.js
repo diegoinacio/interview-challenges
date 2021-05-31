@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const isBalanced = require("../balanced_brackets");
+const isBalanced = require("../src/balanced_brackets");
 
 describe("Sample Tests", function () {
   describe("Case 0", function () {
