@@ -34,7 +34,7 @@ class Node(object):
 
 class BinaryTree(object):
     def __init__(self, value=None):
-        self._root = Node(value) if value else value
+        self._root = value and Node(value)
 
     @property
     def root(self):
@@ -47,35 +47,51 @@ class BinaryTree(object):
 
 def get_preOrder(root: Node, order=[]) -> list:
     if root:
-        # First get the data of node
+        # * First get the data of node
         order += [root.data]
-        # Then recur on left child 
+        # * Then recur on left child 
         get_preOrder(root.left, order)
-        # Finally recur on right child 
+        # * Finally recur on right child 
         get_preOrder(root.right, order)
-    # Return a list of order
+    # * Return a list of order
     return order
 
 def get_postOrder(root: Node, order=[]) -> list:
     if root:
-        # First recur on left child 
+        # * First recur on left child 
         get_postOrder(root.left, order)
-        # Then recur on right child 
+        # * Then recur on right child 
         get_postOrder(root.right, order)
-        # Finally get the data of node
+        # * Finally get the data of node
         order += [root.data]
-    # Return a list of order
+    # * Return a list of order
     return order
 
 def get_inOrder(root: Node, order=[]) -> list:
     if root:
-        # First recur on left child 
+        # * First recur on left child 
         get_inOrder(root.left, order)
-        # Then get the data of node
+        # * Then get the data of node
         order += [root.data]
-        # Finally recur on right child 
+        # * Finally recur on right child 
         get_inOrder(root.right, order)
-    # Return a list of order
+    # * Return a list of order
+    return order
+
+def get_levelOrder(root: Node, order=[]) -> list:
+    if root:
+        # * Init stacking the root note
+        stack = [root]
+        # * While the stack is not empty
+        while stack:
+            # * Get the first element
+            node = stack.pop(0)
+            if node:
+                # * Store the level order
+                order += [node.data]
+                # * Stack the left and right nodes
+                stack += [node.left, node.right]
+    # * Return a list of order
     return order
 
 def get_height(root: Node) -> int:
