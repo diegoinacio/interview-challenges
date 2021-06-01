@@ -54,6 +54,12 @@ class Test_TreeAlgorithms(unittest.TestCase):
             [6, 4, 7, 2, 1, 5, 9, 3, 10, 8]
         )
 
+    def test_get_levelOrder(self):
+        self.assertEqual(
+            get_levelOrder(BT.root),
+            [5, 2, 3, 4, 1, 9, 8, 6, 7, 10]
+        )
+
     def test_get_height(self):
         self.assertEqual(get_height(BT.root), 3)
 
