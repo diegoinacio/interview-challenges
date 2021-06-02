@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node(object):
     def __init__(self, data):
         self._data = data
@@ -43,10 +46,32 @@ class BinaryTree(object):
     @root.setter
     def root(self, value):
         self._root = Node(value)
+    
+    def __str__(self):
+        levelOrder = get_levelOrder(self._root)
+        return " -> ".join([f'{e}' for e in levelOrder])
 
 
-def get_preOrder(root: Node, order=[]) -> list:
-    if root:
+def BuildTree(root: Node, indices: List[List[int]]) -> None:
+    if isinstance(root, Node):
+        # * Init stacking the root node
+        stack = [root]
+        # * Loop through indices
+        for l, r in indices:
+            # * Get the first element from the stack
+            node = stack.pop(0)
+            # * Store left node if not -1
+            if l != -1:
+                node.left = l
+                stack += [node.left]
+            # * Store right node if not -1
+            if r != -1:
+                node.right = r
+                stack += [node.right]
+
+
+def get_preOrder(root: Node, order=[]) -> List:
+    if isinstance(root, Node):
         # * First get the data of node
         order += [root.data]
         # * Then recur on left child 
@@ -56,8 +81,9 @@ def get_preOrder(root: Node, order=[]) -> list:
     # * Return a list of order
     return order
 
-def get_postOrder(root: Node, order=[]) -> list:
-    if root:
+
+def get_postOrder(root: Node, order=[]) -> List:
+    if isinstance(root, Node):
         # * First recur on left child 
         get_postOrder(root.left, order)
         # * Then recur on right child 
@@ -67,8 +93,9 @@ def get_postOrder(root: Node, order=[]) -> list:
     # * Return a list of order
     return order
 
-def get_inOrder(root: Node, order=[]) -> list:
-    if root:
+
+def get_inOrder(root: Node, order=[]) -> List:
+    if isinstance(root, Node):
         # * First recur on left child 
         get_inOrder(root.left, order)
         # * Then get the data of node
@@ -78,13 +105,14 @@ def get_inOrder(root: Node, order=[]) -> list:
     # * Return a list of order
     return order
 
-def get_levelOrder(root: Node, order=[]) -> list:
-    if root:
-        # * Init stacking the root note
+
+def get_levelOrder(root: Node, order=[]) -> List:
+    if isinstance(root, Node):
+        # * Init stacking the root node
         stack = [root]
         # * While the stack is not empty
         while stack:
-            # * Get the first element
+            # * Get the first element from the stack
             node = stack.pop(0)
             if node:
                 # * Store the level order
@@ -93,6 +121,7 @@ def get_levelOrder(root: Node, order=[]) -> list:
                 stack += [node.left, node.right]
     # * Return a list of order
     return order
+
 
 def get_height(root: Node) -> int:
     return max(

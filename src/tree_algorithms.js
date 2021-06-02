@@ -44,8 +44,30 @@ class BinaryTree {
   }
 }
 
+function BuildTree(root, indices) {
+  if (root instanceof Node) {
+    // * Init stacking the root note
+    const stack = [root];
+    // * Loop through indices
+    for (const [l, r] of indices) {
+      // * Get the first element from the stack
+      const node = stack.shift();
+      // * Store left node if not -1
+      if (l !== -1) {
+        node.left = l;
+        stack.push(node.left);
+      }
+      // * Store right node if not -1
+      if (r !== -1) {
+        node.right = r;
+        stack.push(node.right);
+      }
+    }
+  }
+}
+
 function get_preOrder(root, order = []) {
-  if (root) {
+  if (root instanceof Node) {
     // * First get the data of node
     order.push(root.data);
     // * Then recur on left child
@@ -58,7 +80,7 @@ function get_preOrder(root, order = []) {
 }
 
 function get_postOrder(root, order = []) {
-  if (root) {
+  if (root instanceof Node) {
     // * First recur on left child
     get_postOrder(root.left, order);
     // * Then recur on right child
@@ -71,7 +93,7 @@ function get_postOrder(root, order = []) {
 }
 
 function get_inOrder(root, order = []) {
-  if (root) {
+  if (root instanceof Node) {
     // * First recur on left child
     get_inOrder(root.left, order);
     // * Then get the data of node
@@ -84,13 +106,13 @@ function get_inOrder(root, order = []) {
 }
 
 function get_levelOrder(root, order = []) {
-  if (root) {
+  if (root instanceof Node) {
     // * Init stacking the root note
     const stack = [root];
     // * While the stack is not empty
     while (stack.length) {
       // * Get the first element
-      let node = stack.shift();
+      const node = stack.shift();
       if (node) {
         // * Store the level order
         order.push(node.data);
@@ -111,6 +133,7 @@ function get_height(root) {
 
 module.exports = {
   BinaryTree,
+  BuildTree,
   get_preOrder,
   get_postOrder,
   get_inOrder,
