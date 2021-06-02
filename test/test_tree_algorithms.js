@@ -1,6 +1,7 @@
 const assert = require("chai").assert;
 const {
   BinaryTree,
+  BuildTree,
   get_preOrder,
   get_postOrder,
   get_inOrder,
@@ -19,17 +20,19 @@ const {
 //  6    7     10
 //
 
-BT = new BinaryTree();
-BT.root = 5;
-BT.root.left = 2;
-BT.root.right = 3;
-BT.root.left.left = 4;
-BT.root.left.right = 1;
-BT.root.right.left = 9;
-BT.root.right.right = 8;
-BT.root.left.left.left = 6;
-BT.root.left.left.right = 7;
-BT.root.right.right.left = 10;
+BT = new BinaryTree(5);
+BuildTree(BT.root, [
+  [2, 3],
+  [4, 1],
+  [9, 8],
+  [6, 7],
+  [-1, -1],
+  [-1, -1],
+  [10, -1],
+  [-1, -1],
+  [-1, -1],
+  [-1, -1],
+]);
 
 describe("Tree Traversal Tests", function () {
   describe("Depth-first Order", function () {

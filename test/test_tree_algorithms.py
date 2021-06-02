@@ -22,17 +22,20 @@ from tree_algorithms import *
 # 
 
 
-BT = BinaryTree()
-BT.root = 5
-BT.root.left = 2
-BT.root.right = 3
-BT.root.left.left = 4
-BT.root.left.right = 1
-BT.root.right.left = 9
-BT.root.right.right = 8
-BT.root.left.left.left = 6
-BT.root.left.left.right = 7
-BT.root.right.right.left = 10
+BT = BinaryTree(5)
+BuildTree(BT.root, [
+    [2, 3],
+    [4, 1],
+    [9, 8],
+    [6, 7],
+    [-1, -1],
+    [-1, -1],
+    [10, -1],
+    [-1, -1],
+    [-1, -1],
+    [-1, -1]
+])
+print(BT)
 
 
 class Test_TreeAlgorithms(unittest.TestCase):
