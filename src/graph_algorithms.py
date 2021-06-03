@@ -4,7 +4,8 @@ class Vertex:
         self.adjacent = {}
 
     def add_neighbor(self, n, w=0):
-        self.adjacent[n] = w
+        self.adjacent[n.id] = w
+
 
 class UndirectedGraph:
     def __init__(self):
@@ -12,8 +13,8 @@ class UndirectedGraph:
         self.n_vert = 0
 
     def add_vertex(self, vertex):
-        self.n_vert += 1
         self.vertices[vertex] = Vertex(vertex)
+        self.n_vert += 1
 
     def add_edge(self, vo, vi, w=0):
         if vo not in self.vertices:
@@ -26,24 +27,22 @@ class UndirectedGraph:
     def get_vertex(self, vertex):
         adjacent = self.vertices[vertex].adjacent
         n_vert = len(adjacent)
-        return [
-            vertex,
-            n_vert,
-            {v.id: adjacent[v] for v in adjacent}
-        ]
+        return [vertex, n_vert, adjacent]
 
     def get_vertices(self):
         return [self.get_vertex(v) for v in sorted(self.vertices)]
 
     def display_vertex(self, vertex):
-        Vertex = self.get_vertex(vertex)
-        n_vert = Vertex[1]
-        adjacent = Vertex[2]
+        VERTEX = self.get_vertex(vertex)
+        n_vert = VERTEX[1]
+        adjacent = VERTEX[2]
         output = f'[{n_vert}] Vertex "{vertex}":\n'
         for v in sorted(adjacent):
             output += f'\t{vertex} <-> {v} [{adjacent[v]}]\n'
         print(output)
+        return "ok"
 
     def display_vertices(self):
-        for vertex in self.vertices.keys():
+        for vertex in sorted(self.vertices.keys()):
             self.display_vertex(vertex)
+        return "ok"
