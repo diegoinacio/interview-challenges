@@ -35,7 +35,6 @@ BuildTree(BT.root, [
     [-1, -1],
     [-1, -1]
 ])
-print(BT)
 
 
 class Test_TreeAlgorithms(unittest.TestCase):
