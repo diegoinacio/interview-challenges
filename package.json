@@ -1,14 +1,15 @@
 {
   "name": "interview-challenges",
   "version": "1.0.0",
-  "description": "My personal *Python* entries for interview questions and challenges.",
+  "description": "My personal entries for interview questions and challenges.",
   "main": "index.js",
   "directories": {
+    "src": "src",
     "test": "test"
   },
   "scripts": {
-    "python": "echo python",
-    "test": "mocha || exit 0"
+    "test-py": "python -m unittest",
+    "test-js": "mocha || exit 0"
   },
   "repository": {
     "type": "git",
